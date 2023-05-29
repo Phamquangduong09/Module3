@@ -26,6 +26,9 @@ public class BrandServlet extends HttpServlet {
             case "delete":
                 delete(request, response);
                 break;
+            case "detail":
+                detail(request,response);
+                break;
             default:
                 findAll(request, response);
         }
@@ -94,6 +97,16 @@ public class BrandServlet extends HttpServlet {
             brandManage.deleteById(id);
             productManage.deleteByBrand(brand);
             response.sendRedirect("/brand");
+        }
+    }
+
+    private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id =Integer.parseInt(request.getParameter("id"));
+        Brand brand = brandManage.getBrandById(id);
+        if (brand != null) {
+            request.setAttribute("brand",brand.getName());
+            request.setAttribute("product", productManage.getProduct());
+            request.getRequestDispatcher("/detailBrand.jsp").forward(request,response);
         }
     }
 

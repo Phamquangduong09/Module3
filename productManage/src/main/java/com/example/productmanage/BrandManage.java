@@ -34,6 +34,15 @@ public class BrandManage {
         return null;
     }
 
+    public Brand getBrandByName(String name) {
+        for (Brand brand : brandList) {
+            if (brand.getName().equals(name)) {
+                return brand;
+            }
+        }
+        return null;
+    }
+
     public void addBrand(Brand b) {
         brandList.add(b);
     }
