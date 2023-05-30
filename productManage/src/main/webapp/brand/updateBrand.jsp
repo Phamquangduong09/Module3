@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form style="width: 600px; margin: auto" action="brand?action=update&&id=${brand.id}" method="post">
+<form style="width: 600px; margin: auto" action="?action=update&&id=${brand.id}" method="post">
     <h2>Form update brand</h2>
     <input type="text" name="name" placeholder="Enter name" value="${brand.name}">
     <button type="submit">Update</button>

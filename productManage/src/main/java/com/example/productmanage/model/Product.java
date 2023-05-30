@@ -1,4 +1,6 @@
-package com.example.productmanage;
+package com.example.productmanage.model;
+
+import java.time.LocalDate;
 
 public class Product {
     private String id;
@@ -17,18 +19,20 @@ public class Product {
     private String color;
 
     private String describe;
+    private LocalDate date;
 
 
     public Product() {
     }
 
-    public Product(String name, double price, Brand brand, String color, String describe) {
+    public Product(String name, double price, Brand brand, String color, String describe, LocalDate date) {
         this.id = "MS" + idUp++;
         this.name = name;
         this.price = price;
         this.brand = brand;
         this.color = color;
         this.describe = describe;
+        this.date = date;
     }
 
     public String getId() {
@@ -85,6 +89,14 @@ public class Product {
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

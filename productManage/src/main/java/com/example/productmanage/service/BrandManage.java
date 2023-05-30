@@ -1,4 +1,6 @@
-package com.example.productmanage;
+package com.example.productmanage.service;
+
+import com.example.productmanage.model.Brand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,4 +64,5 @@ public class BrandManage {
             brandList.remove(brand);
         }
     }
+
 }

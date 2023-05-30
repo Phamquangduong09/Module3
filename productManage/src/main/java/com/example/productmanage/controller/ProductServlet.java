@@ -1,9 +1,15 @@
-package com.example.productmanage;
+package com.example.productmanage.controller;
+
+import com.example.productmanage.service.ProductManage;
+import com.example.productmanage.model.Brand;
+import com.example.productmanage.model.Product;
+import com.example.productmanage.service.BrandManage;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
 public class ProductServlet extends HttpServlet {
@@ -52,13 +58,13 @@ public class ProductServlet extends HttpServlet {
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("product", productManage.getProduct());
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/home.jsp");
         requestDispatcher.forward(request, response);
     }
 
     private void createGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("brand", brandManage.getBrand());
-        request.getRequestDispatcher("createProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("product/createProduct.jsp").forward(request, response);
     }
 
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,9 +74,10 @@ public class ProductServlet extends HttpServlet {
         Brand brand = BrandManage.getInstance().getBrandById(brandId);
         String color = request.getParameter("color");
         String describe = request.getParameter("describe");
-        Product product = new Product(name, price, brand, color, describe);
+        LocalDate date = LocalDate.parse(request.getParameter("date"));
+        Product product = new Product(name, price, brand, color, describe,date);
         productManage.addProduct(product);
-        response.sendRedirect("/");
+        response.sendRedirect("/products");
     }
 
     private void updateGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,7 +85,7 @@ public class ProductServlet extends HttpServlet {
         Product product = productManage.getById(id);
         if (product != null) {
             request.setAttribute("brand", brandManage.getBrand());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("update.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/update.jsp");
             request.setAttribute("product", product);
             requestDispatcher.forward(request, response);
         } else {
@@ -94,6 +101,7 @@ public class ProductServlet extends HttpServlet {
         Brand brand = BrandManage.getInstance().getBrandById(brandId);
         String color = request.getParameter("color");
         String describe = request.getParameter("describe");
+        LocalDate date = LocalDate.parse(request.getParameter("date"));
 
         Product product = productManage.getById(id);
         if (product != null) {
@@ -102,6 +110,7 @@ public class ProductServlet extends HttpServlet {
             product.setBrand(brand);
             product.setColor(color);
             product.setDescribe(describe);
+            product.setDate(date);
             response.sendRedirect("/products");
         } else {
             response.sendRedirect("/404.jsp");

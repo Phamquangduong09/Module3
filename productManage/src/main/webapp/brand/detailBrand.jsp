@@ -34,6 +34,7 @@
     <td>${p.brand.name}</td>
     <td>${p.color}</td>
     <td>${p.describe}</td>
+    <td>${sum}</td>
   </tr>
   </c:if>
   </c:forEach>

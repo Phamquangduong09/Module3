@@ -1,4 +1,7 @@
-package com.example.productmanage;
+package com.example.productmanage.service;
+
+import com.example.productmanage.model.Brand;
+import com.example.productmanage.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +12,6 @@ public class ProductManage {
 
     public ProductManage() {
         productList = new ArrayList<>();
-        productList.add(new Product("Iphone 14", 1200, new Brand("Apple"), "Gold", "new"));
-        productList.add(new Product("SamSung s20 ultra", 1100, new Brand("SamSung"), "Pink", "new"));
-        productList.add(new Product("Oppo reno 8", 900, new Brand("Oppo"), "White", "new"));
     }
 
     public static ProductManage getInstance() {

@@ -28,6 +28,7 @@
         <td>${p.brand.name}</td>
         <td>${p.color}</td>
         <td>${p.describe}</td>
+        <td>${p.date}</td>
         <td><button onclick="deleteS('${p.id}')">Delete</button></td>
         <td><a href="products?action=update&&id=${p.id}">Update</a></td>
     </tr>
@@ -36,7 +37,6 @@
 </body>
 <script>
     function deleteS(id) {
-        alert(id);
         if (confirm("Are you sure?")) {
             window.location.href = `http://localhost:8080/products?action=delete&&id=` + id
         }

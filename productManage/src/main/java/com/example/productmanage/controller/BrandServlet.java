@@ -1,4 +1,9 @@
-package com.example.productmanage;
+package com.example.productmanage.controller;
+
+import com.example.productmanage.model.Brand;
+import com.example.productmanage.model.Product;
+import com.example.productmanage.service.BrandManage;
+import com.example.productmanage.service.ProductManage;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -53,12 +58,12 @@ public class BrandServlet extends HttpServlet {
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("brand", brandManage.getBrand());
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeBrand.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/brand/homeBrand.jsp");
         requestDispatcher.forward(request, response);
     }
 
     private void createGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("/createBrand.jsp");
+        response.sendRedirect("/brand/createBrand.jsp");
     }
 
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,7 +77,7 @@ public class BrandServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Brand brand = brandManage.getById(id);
         if (brand != null) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateBrand.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/brand/updateBrand.jsp");
             request.setAttribute("brand", brand);
             requestDispatcher.forward(request, response);
         } else {
@@ -103,11 +108,21 @@ public class BrandServlet extends HttpServlet {
     private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id =Integer.parseInt(request.getParameter("id"));
         Brand brand = brandManage.getBrandById(id);
+        int i = 0;
+        for (Product p: productManage.getProduct()){
+            if(p.getBrand().getName().equals(brand.getName())){
+                i++;
+            }
+        }
         if (brand != null) {
+            request.setAttribute("sum",i);
             request.setAttribute("brand",brand.getName());
             request.setAttribute("product", productManage.getProduct());
-            request.getRequestDispatcher("/detailBrand.jsp").forward(request,response);
+            request.getRequestDispatcher("/brand/detailBrand.jsp").forward(request,response);
         }
+
+
+
     }
 
 

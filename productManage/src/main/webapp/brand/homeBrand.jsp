@@ -25,8 +25,8 @@
         <td>${b.id}</td>
         <td>${b.name}</td>
         <td><button onclick="deleteS(${b.id})">Delete</button></td>
-        <td><a href="brand?action=update&&id=${b.id}">Update</a></td>
-        <td><a href="brand?action=detail&&id=${b.id}">Detail</a></td>
+        <td><a href="?action=update&&id=${b.id}">Update</a></td>
+        <td><a href="?action=detail&&id=${b.id}">Detail</a></td>
     </tr>
     </c:forEach>
 </table>

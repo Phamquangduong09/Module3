@@ -24,6 +24,7 @@
   </select>
   <input type="text" name="color" placeholder="Enter color" value="${product.color}">
   <input type="text" name="describe" placeholder="Enter describe" value="${product.describe}">
+  <input type="text" name="date" placeholder="Enter describe" value="${product.date}">
   <button type="submit">Update</button>
   <a href="/home">Back to home</a>
 </form>

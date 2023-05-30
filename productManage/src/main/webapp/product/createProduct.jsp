@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1 style="text-align: center">Form create student</h1>
-<form style="width: 600px; margin: auto" action="products?action=create" method="post">
+<form style="width: 600px; margin: auto" action="/products?action=create" method="post">
     <input type="text" name="name" placeholder="Enter name">
     <input type="text" name="price" placeholder="Enter price">
     <select name="brandId">
@@ -26,6 +26,7 @@
     </select>
     <input type="text" name="color" placeholder="Enter color">
     <input type="text" name="describe" placeholder="Enter describe">
+    <input type="date" name="date">
     <button type="submit">Create</button>
     <a  href="/products">Back to home</a>
 </form>
