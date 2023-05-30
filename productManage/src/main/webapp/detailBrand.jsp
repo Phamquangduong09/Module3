@@ -26,7 +26,7 @@
   </thead>
   <tbody>
   <c:forEach items="${product}" var="p">
-  <c:if test="${p.name==brand}">
+  <c:if test="${p.brand.name==brand}">
   <tr>
     <td>${p.id}</td>
     <td>${p.name}</td>
