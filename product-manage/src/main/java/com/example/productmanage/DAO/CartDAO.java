@@ -19,7 +19,7 @@ public class CartDAO {
     private final String UPDATE_BY_ID = "update cart set  quantity = ?,product_id = ? where id = ?";
     private final String DELETE_BY_ID = "delete from cart where id = ?";
     private final String UPDATE_QUANTITY = "update cart set quantity = quantity + ? where id = ?";
-    private final String TOTAL_PRICE = "select sum(price * cart.quantity) as total_price from cart join product p on p.id = cart.product_id;";
+    private final String TOTAL_PRICE = "select sum(price * cart.quantity) as total_price from cart join product p on p.id = cart.id_product;";
 
     private Connection connection = MyConnection.getConnection();
     private static CartDAO cartDAO;

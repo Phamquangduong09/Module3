@@ -42,7 +42,11 @@
                 </td>
             </tr>
         </c:forEach>
+        <tr>
+            <td>${total}</td>
+        </tr>
         </tbody>
+
     </table>
 </div>
 </body>
@@ -56,4 +60,5 @@
             window.location.href = "/cart?action=updateQuantity&quantity=" + editQuantity + "&id=" + id;
         }
     }
+    </script>
 </html>
