@@ -39,21 +39,7 @@ public class CartService {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Product product = ProductService.getInstance().getById(id);
         Cart cart = new Cart(quantity, product);
-//        boolean check = true;
-//        int cartId = -1;
-//        for (Cart c : CartDAO.getInstance().displayAll()) {
-//            if (c.getProduct().getId() == product.getId()) {
-//                check = false;
-//                cartId = c.getId();
-//                break;
-//            }
-//        }
-//        if (check) {
-//            CartDAO.getInstance().addCart(cart);
-//        } else {
-//            CartDAO.getInstance().updateCartQuantity(cartId, quantity);
-//        }
-//        ProductService.getInstance().updateQuantityDecrease(id, quantity);
+        cartDAO.addCart(cart);
     }
 
     public void deleteById(HttpServletRequest request) {

@@ -62,7 +62,7 @@
                     <button class="btn btn-danger" onclick="deleteS(${p.id})">Delete</button>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="/cart?action=addToCart&&id=${p.id}">ADD Cart</a>
+                    <button class="btn btn-info" onclick="addToCart(${p.id},${p.quantity})">Add to cart</button>
                 </td>
             </tr>
         </c:forEach>
@@ -76,6 +76,19 @@
             window.location.href = `http://localhost:8080/product?action=delete&&id=` + id
         }
     }
+
+    function addToCart(id, productQuantity) {
+        let quantity = prompt("Enter quantity !!");
+        if (quantity > productQuantity) {
+            alert("out of stock !!")
+        } else if (quantity <= 0) {
+            alert("quantity not valid !!")
+        } else {
+            alert("add success !!");
+            window.location.href = "/cart?action=add&id=" + id + "&quantity=" + quantity;
+        }
+    }
+</script>
 </script>
 
 </html>

@@ -61,7 +61,7 @@ public class CartServlet extends HttpServlet {
     private void updateQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        cartDAO.updateCartQuantity(id,quantity);
-                response.sendRedirect("/cart");
+        cartDAO.updateCartQuantity(id, quantity);
+        response.sendRedirect("/cart");
     }
 }

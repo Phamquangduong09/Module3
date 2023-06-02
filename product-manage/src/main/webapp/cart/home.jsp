@@ -28,7 +28,6 @@
             <th colspan="2" style="text-align: center; width: 33%">Action</th>
         </tr>
         </thead>
-
         <tbody>
         <c:forEach items="${cart}" var="c">
             <tr>
